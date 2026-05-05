@@ -1,6 +1,6 @@
 module Admin
   class OrdersController < BaseController
-    before_action :set_order, only: [:update, :destroy]
+    before_action :set_order, only: [ :update, :destroy ]
 
     def index
       @orders = Order.ordered.includes(order_items: :menu_item)

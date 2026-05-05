@@ -14,7 +14,7 @@ class PagesController < ApplicationController
     @email = SiteSetting.get("email")
     @storefront_image = "storefront.jpg"
     @google_reviews = GoogleReviewsService.fetch
-    @drinks = MenuItem.joins(:menu_category).where(menu_categories: { name: ["Drinks", "Beverages"] }).active.ordered
+    @drinks = MenuItem.joins(:menu_category).where(menu_categories: { name: [ "Drinks", "Beverages" ] }).active.ordered
   end
 
   def about

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "menu", to: "menu#index"
   get "about", to: "pages#about"
   get "contact", to: "contact#index"
-  resources :reservations, only: [:new, :create]
+  resources :reservations, only: [ :new, :create ]
 
   # Cart
   get "cart", to: "cart#show"
@@ -23,20 +23,20 @@ Rails.application.routes.draw do
   delete "cart/clear", to: "cart#clear", as: :cart_clear
 
   # Orders
-  resources :orders, only: [:new, :create]
+  resources :orders, only: [ :new, :create ]
   get "orders/:id/confirmation", to: "orders#confirmation", as: :order_confirmation
 
   # Admin
   namespace :admin do
     root "dashboard#index"
-    resources :menu_categories, except: [:show]
-    resources :menu_items, except: [:show]
-    resource :hours, only: [:edit, :update]
-    resources :testimonials, except: [:show]
-    resources :reservations, only: [:index, :update, :destroy]
-    resources :orders, only: [:index, :update, :destroy]
-    resources :meal_deals, except: [:show]
-    resource :site_settings, only: [:edit, :update]
+    resources :menu_categories, except: [ :show ]
+    resources :menu_items, except: [ :show ]
+    resource :hours, only: [ :edit, :update ]
+    resources :testimonials, except: [ :show ]
+    resources :reservations, only: [ :index, :update, :destroy ]
+    resources :orders, only: [ :index, :update, :destroy ]
+    resources :meal_deals, except: [ :show ]
+    resource :site_settings, only: [ :edit, :update ]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

@@ -1,6 +1,6 @@
 module Admin
   class MenuCategoriesController < BaseController
-    before_action :set_category, only: [:edit, :update, :destroy]
+    before_action :set_category, only: [ :edit, :update, :destroy ]
 
     def index
       @categories = MenuCategory.ordered

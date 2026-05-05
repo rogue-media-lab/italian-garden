@@ -1,6 +1,6 @@
 module Admin
   class MenuItemsController < BaseController
-    before_action :set_item, only: [:edit, :update, :destroy]
+    before_action :set_item, only: [ :edit, :update, :destroy ]
 
     def index
       @items = MenuItem.includes(:menu_category).ordered

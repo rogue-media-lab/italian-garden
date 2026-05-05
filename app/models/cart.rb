@@ -71,7 +71,7 @@ class Cart
   end
 
   def menu_items
-    all_ids = @items.keys.map(&:to_i) + @meal_deals.flat_map { |m| [m["main_id"], m["side_id"], m["drink_id"]] }
+    all_ids = @items.keys.map(&:to_i) + @meal_deals.flat_map { |m| [ m["main_id"], m["side_id"], m["drink_id"] ] }
     MenuItem.where(id: all_ids.uniq).index_by(&:id)
   end
 
@@ -80,7 +80,7 @@ class Cart
   end
 
   def drink_options
-    MenuItem.joins(:menu_category).where(menu_categories: { name: ["Drinks", "Beverages"] }).active.ordered
+    MenuItem.joins(:menu_category).where(menu_categories: { name: [ "Drinks", "Beverages" ] }).active.ordered
   end
 
   def total

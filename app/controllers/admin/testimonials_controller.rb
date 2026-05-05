@@ -1,6 +1,6 @@
 module Admin
   class TestimonialsController < BaseController
-    before_action :set_testimonial, only: [:edit, :update, :destroy]
+    before_action :set_testimonial, only: [ :edit, :update, :destroy ]
 
     def index
       @testimonials = Testimonial.ordered

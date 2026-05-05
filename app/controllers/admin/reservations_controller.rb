@@ -1,6 +1,6 @@
 module Admin
   class ReservationsController < BaseController
-    before_action :set_reservation, only: [:update, :destroy]
+    before_action :set_reservation, only: [ :update, :destroy ]
 
     def index
       @reservations = Reservation.ordered

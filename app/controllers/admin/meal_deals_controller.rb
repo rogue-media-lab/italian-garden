@@ -1,6 +1,6 @@
 module Admin
   class MealDealsController < BaseController
-    before_action :set_deal, only: [:edit, :update, :destroy]
+    before_action :set_deal, only: [ :edit, :update, :destroy ]
 
     def index
       @deals = MealDeal.ordered.includes(:main_item, :default_side, :default_drink)
@@ -51,8 +51,8 @@ module Admin
 
     def load_options
       @main_items = MenuItem.active.ordered.includes(:menu_category)
-      @sides = MenuItem.joins(:menu_category).where(menu_categories: { name: ["Wings & Sides", "Side Orders"] }).active.ordered
-      @drinks = MenuItem.joins(:menu_category).where(menu_categories: { name: ["Drinks", "Beverages"] }).active.ordered
+      @sides = MenuItem.joins(:menu_category).where(menu_categories: { name: [ "Wings & Sides", "Side Orders" ] }).active.ordered
+      @drinks = MenuItem.joins(:menu_category).where(menu_categories: { name: [ "Drinks", "Beverages" ] }).active.ordered
     end
   end
 end
