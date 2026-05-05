@@ -65,3 +65,4 @@ group :test do
 end
 gem "devise", "~> 4.9"
 gem "faraday"
+gem "image_processing", "~> 1.2"
