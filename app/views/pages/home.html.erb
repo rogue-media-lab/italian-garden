@@ -19,10 +19,11 @@
   <div class="grid grid-cols-1 md:grid-cols-3 gap-7 max-w-6xl mx-auto">
     <%# Show meal deals first, then individual featured items to fill remaining slots %>
     <% @featured_deals.each do |deal| %>
+      <% deal_photo = FoodPhotos.for(deal.main_item.name) %>
       <div class="bg-white rounded-lg overflow-hidden shadow-sm">
         <div class="h-48 bg-gradient-to-br from-[#D4A373] to-[#8B1A1A] flex items-center justify-center relative">
-          <% if deal.photo.attached? %>
-            <%= image_tag deal.photo, class: "w-full h-full object-cover" %>
+          <% if deal_photo %>
+            <%= image_tag deal_photo, class: "w-full h-full object-cover" %>
           <% else %>
             <span class="text-5xl opacity-30">🍽️</span>
           <% end %>
@@ -41,10 +42,11 @@
     <%# Fill remaining slots with individual featured items %>
     <% remaining = 3 - @featured_deals.size %>
     <% @featured_items.first(remaining).each do |item| %>
+      <% item_photo = FoodPhotos.for(item.name) %>
       <div class="bg-white rounded-lg overflow-hidden shadow-sm">
         <div class="h-48 bg-gradient-to-br from-[#D4A373] to-[#8B1A1A] flex items-center justify-center">
-          <% if item.photo.attached? %>
-            <%= image_tag item.photo, class: "w-full h-full object-cover" %>
+          <% if item_photo %>
+            <%= image_tag item_photo, class: "w-full h-full object-cover" %>
           <% else %>
             <span class="text-5xl opacity-30">🍽️</span>
           <% end %>

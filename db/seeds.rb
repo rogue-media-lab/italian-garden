@@ -199,4 +199,24 @@ settings.each do |key, value|
 end
 puts "Site settings: #{SiteSetting.count}"
 
+# Attach photos to featured items
+photos = {
+  "Chicken Parmigiana" => "chicken-parm.webp",
+  "Special Pizza" => "special-pitza.webp",
+  "Gyro Plate" => "gyro.webp"
+}
+
+photos.each do |item_name, filename|
+  item = MenuItem.find_by(name: item_name)
+  next unless item
+  path = Rails.root.join("app/assets/images", filename)
+  next unless File.exist?(path)
+  item.photo.attach(
+    io: File.open(path),
+    filename: filename,
+    content_type: "image/#{filename.split('.').last}"
+  )
+  puts "Attached photo to: #{item_name}"
+end
+
 puts "\nSeed complete!"
